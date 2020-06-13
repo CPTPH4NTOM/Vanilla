@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Vanilla JS Demos</title>
+<link rel="stylesheet"  href="css/style.css" />
+<script src="js/vanillaFunctions.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() 
+{
+
+  var blockDIV=document.getElementById('block');
+
+  document.querySelector("#click").addEventListener("click", function(e)
+  {
+    var data='username=9lessons Programming Blog';
+    
+
+    
+    vanillaGetPost('GET', 'get.php', data, function(data) {
+        document.getElementById("box").innerHTML ="Ajax Get Data ="+ data;
+    });
+    e.preventDefault();
+  });
+
+  document.querySelector("#hide").addEventListener("click", function()
+  {
+      blockDIV.style.display = 'none'
+  });
+
+  document.querySelector("#show").addEventListener("click", function()
+  {
+      blockDIV.style.display = ''
+  });
+
+  document.querySelector("#fadeOut").addEventListener("click", function()
+  {
+      vanillaFadeEffect('fadeOut',document.getElementById('fadeBlock'), 1000);
+
+  });
+
+   document.querySelector("#fadeIn").addEventListener("click", function()
+  {
+      vanillaFadeEffect('fadeIn',document.getElementById('fadeBlock'), 1000);
+
+  });
+
+  
+
+  document.querySelector("#toggle").addEventListener("click", function()
+  {
+      blockDIV.classList.toggle('hidden');
+  });
+
+
+
+  [].forEach.call(document.querySelectorAll(".grid"), function(el) {
+    el.addEventListener("mouseover", function() {
+      this.classList.add('hover');
+    });
+  });
+
+  [].forEach.call(document.querySelectorAll(".grid"), function(el) {
+    el.addEventListener("mouseout", function() {
+      this.classList.remove('hover');
+    });
+  });
+
+
+
+});
+</script>
+
+</head>
+<body>
+<div id="container">
+<h1>Vanilla</h1>
+<h4>Event Click Action</h4>
+<a href="#" id="click">Selector Ajax Get Click</a>
+<div id="box"></div>
+
+
+<h4>Mouse Over & Mouse Out</h4>
+<div class="grid" ></div>
+<div class="grid" ></div>
+<div class="grid" ></div>
+<div class="grid" ></div>
+
+<table width="100%">
+<tr>
+<td width="50%" valign="top">
+
+<h4>Fade Out & Fade In</h4>
+<div>
+<a href="#" id="fadeOut">FadeOut</a> --- <a href="#" id="fadeIn">FadeIn</a> <br/>
+</div>
+<div id="fadeBlock" class='fadeGrid'></div>
+</td>
+<Td valign="top">
+
+<h4>Hide & Show</h4>
+<a href="#" id="hide">Hide</a> ---- <a href="#" id="show">Show</a> ---- <a href="#" id="toggle">Toggle</a>
+<div id="block"></div>
+</Td>
+</tr>
+</table>
+
+
+
+
+</div>
+</body>
+</html>
